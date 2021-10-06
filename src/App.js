@@ -7,7 +7,6 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-
 function App() {
   const [city, setCity] = useState("");
   const [unit, setWeatherUnit] = useState("metric");
@@ -56,7 +55,7 @@ function App() {
   }
 
   const getWeatherInfo = async () => {
-    var options = {
+    let options = {
       method: 'GET',
       url: 'https://community-open-weather-map.p.rapidapi.com/weather',
       params: {
@@ -65,7 +64,7 @@ function App() {
       },
       headers: {
         'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
-        'x-rapidapi-key': '2cd899aa63msh1475c13edf5d7d1p1ccfc5jsnec1fc7cf4ea9'
+        'x-rapidapi-key': process.env.REACT_APP_WEATHER_API_KEY
       }
     };
     try {
