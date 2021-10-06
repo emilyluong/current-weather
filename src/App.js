@@ -55,21 +55,9 @@ function App() {
   }
 
   const getWeatherInfo = async () => {
-    let options = {
-      method: 'GET',
-      url: 'https://community-open-weather-map.p.rapidapi.com/weather',
-      params: {
-        q: city,
-        units: unit
-      },
-      headers: {
-        'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
-        'x-rapidapi-key': process.env.REACT_APP_WEATHER_API_KEY
-      }
-    };
     try {
       setError(false);
-      const response = await axios.request(options);
+      const response = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}&units=${unit}`);
       setWeatherInfo(response.data);
     } catch (error) {
       console.error(error);
